@@ -20,10 +20,10 @@ public:
         }
     }
 
-    void initialArray(){
+   void initialArray(){
         cout << "Initial array: ";
         for( int i=0; i<n; i++){
-            cout << arr[i] << " ";
+            cout << "|" << arr[i] << "| ";
         }
         cout << endl;
     }
@@ -45,18 +45,21 @@ public:
             }
             cout << "Press Enter to see the next iteration...";
             cin.get();
-            cout << "Array after iteration " << i+1 << ": ";
-            for(int k=0; k<n; k++){
-                cout << arr[k] << " ";
-            }
-            cout << endl;
+            cout << "Array after iteration " << i+1 << ":" << endl;
+           for(int k = 0; k < n; k++) {
+            if(k == i || k == min) {
+                    cout << "|*" << arr[k] << "*| ";
+                }else{
+            cout << "| " << arr[k] << " ";
+        }}
+        cout << "|" << endl;
         }
     }
 
-    void displaySortedArray(){
+ void displaySortedArray(){
         cout << "Sorted Array: ";
         for(int k=0; k<n; k++){
-            cout << arr[k] << " ";
+            cout << "|" << arr[k] << "| ";
         }
         cout << endl;
     }
@@ -74,7 +77,7 @@ int main(){
     s1.enterArray();
     s1.initialArray();
     cout << "Press Enter to start sorting..." << endl;
-    cin.get();
+    cin.ignore();
     s1.sortArray();
     s1.displaySortedArray();
     return 0;
