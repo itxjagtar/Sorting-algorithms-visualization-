@@ -68,10 +68,14 @@ bs.input();
 cout<<endl;
 bs.display();
 cout<<endl;
-cout<<"                                       Visualize Sorted Array                                "<<endl;
+
+cout << "                                      |-------------------------------|" << endl;
+cout << "                                      |    Visualize Sorted Array     |" << endl;
+cout << "                                      |-------------------------------|" << endl;
+
+
 bs.sorting();
 cout<<endl;
 
 return 0;  
 }
-
