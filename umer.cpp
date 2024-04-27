@@ -3,50 +3,75 @@
 using namespace std;
 
 
-void display(int ary[],int s){
-
-for(int i=0;i<s;i++){
-cout<<ary[i]<<" ";
-}
-cout<<endl;
-
-}
-
-int main()
-{
+class Bubble_Sorting{
 int size;
-cout<<"Enter size of array: ";       cin>>size;
-cin.ignore();
-cout<<"Enter elements of array: ";  
-cout<<endl; 
+int* array;
 
-int *arr=new int[size];
+public:
 
+Bubble_Sorting(int s){
+    size=s;
+    array=new int[size];
+}
+
+void input(){
+cout<<"Enter Elements of Array: "<<endl;
 for(int i=0;i<size;i++){
-     cin>>arr[i];
+   cin>>array[i];
 }
 cout<<endl;
+}
 
-cout<<"Elements of array: " ;
-display(arr,size);
+void display(){
+cout<<"Elements of Array: "<<endl;
+for(int i=0;i<size;i++){
+    cout<<array[i]<<" ";
+}
 cout<<endl;
-cout<<"***VISUALIZE SORTED ARRAY***"<<endl;
+}
 
- for(int i=0;i<size-1;i++) {
+void sorting(){
+     for(int i=0;i<size-1;i++) {
             for(int j=0;j<size-i-1;j++) {
-                if(arr[j]>arr[j+1]) {
+                if(array[j]>array[j+1]) {
 
-                    int temp=arr[j];
-                    arr[j]=arr[j+1];
-                    arr[j+1]=temp;
+                    int temp=array[j];
+                    array[j]=array[j+1];
+                    array[j+1]=temp;
                 }
             }
+
+            cout<<endl;
         cout<<"Press Enter To continue: "<<endl;
         cin.get();
         cout<<"Step"<<i+1<<" :";
-        display(arr,size);
+        display();
         cout<<endl;   
     }
-delete[] arr;
- return 0;
 }
+
+~Bubble_Sorting(){
+delete[] array;
+}
+
+}
+;
+
+int main()
+{
+    int size;
+cout<<"Enter size of Array: ";      cin>>size;
+
+Bubble_Sorting bs(size); 
+
+bs.input();
+cout<<endl;
+bs.display();
+cout<<endl;
+cout<<"                                       Visualize Sorted Array                                "<<endl;
+bs.sorting();
+cout<<endl;
+
+return 0;  
+}
+
