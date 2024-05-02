@@ -21,6 +21,21 @@ private:
             heapify(n, largest);
         }
     }
+public:
+    HeapSort(int arr[], int n) {
+        heap = arr;
+        size = n;
+    }
+
+    void sort() {
+        for (int i = size / 2 - 1; i >= 0; i--)
+            heapify(size, i);
+
+        for (int i = size - 1; i > 0; i--) {
+            swap(heap[0], heap[i]);
+            heapify(i, 0);
+        }
+    }
 
 class Selection_Sort{
 private:
