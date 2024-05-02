@@ -36,6 +36,12 @@ public:
             heapify(i, 0);
         }
     }
+ void printArray() {
+        for (int i = 0; i < size; ++i)
+            cout << heap[i] << " ";
+        cout << "\n";
+    }
+};
 
 class Selection_Sort{
 private:
