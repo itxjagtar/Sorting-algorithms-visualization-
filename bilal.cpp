@@ -1,6 +1,12 @@
 #include <iostream>
 using namespace std;
-
+class Arr{
+    public:
+    virtual void EnterArray()=0;
+    virtual void InitialArray()=0;
+    virtual void SortArray()=0;
+    virtual void DisplaySortArray()=0;
+};
 class HeapSort {
 private:
     int *heap;
