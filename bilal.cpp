@@ -50,23 +50,26 @@ void EnterArray() override {
     }
 
 
-    void sort() {
+ void SortArray() override {
         for (int i = size / 2 - 1; i >= 0; i--)
             heapify(size, i);
-
         for (int i = size - 1; i > 0; i--) {
             swap(heap[0], heap[i]);
             heapify(i, 0);
+            cout << "Iteration " << size - i << ": ";
+            for (int j = 0; j < size; ++j)
+                cout << heap[j] << " ";
+            cin.get();
         }
     }
 
-    void printArray() {
+    void DisplaySortArray() override {
+        cout << "Sorted array using heap sort: ";
         for (int i = 0; i < size; ++i)
             cout << heap[i] << " ";
-        cout << "\n";
+        cout << endl;
     }
 };
-
 class SelectionSort: public Arr {
 private:
     int *arr;
