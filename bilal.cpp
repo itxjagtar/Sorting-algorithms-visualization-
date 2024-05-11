@@ -139,9 +139,9 @@ public:
 };
 
 int main() {
-    int n;
-    int arr[] = {12, 11, 13, 5, 6, 7};
-    int arr_size = sizeof(arr) / sizeof(arr[0]);
+   Arr * a1;
+     int n;
+     int choice;
     cout << "Enter the number of elements in the array: ";
     cin >> n;
     if (n <= 0) {
