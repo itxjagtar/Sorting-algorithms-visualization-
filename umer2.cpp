@@ -2,7 +2,16 @@
 #include<iostream>
 using namespace std;
 
-void counting_sort(int ary[],int n){
+class sorting{
+int n;
+int ary[];
+
+public:
+virtual void sort(int ary[],int n)=0;
+};
+
+class count_sort:public sorting{
+void sort(int ary[],int n) override{
 
 int max=ary[0];
 for(int i=1;i<n;i++){
@@ -31,8 +40,8 @@ for(int i=0;i<n;i++){
 
 delete[] count;
 delete[] sorted;
+} 
 };
-
 
 int main()
 {
@@ -51,7 +60,11 @@ for(int i=0;i<s;i++){
     cout<<arr[i]<<"  ";
 }
 cout<<endl;
-counting_sort(arr,s);
+
+sorting* st;
+count_sort ct;
+st=&ct;
+st->sort(arr,s);
 
 cout<<"Sorted Array: ";
 for(int i=0;i<s;i++){
