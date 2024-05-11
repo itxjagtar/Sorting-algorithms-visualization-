@@ -7,70 +7,7 @@ class Arr{
     virtual void SortArray()=0;
     virtual void DisplaySortArray()=0;
 };
-class HeapSort:public Arr  {
-private:
-    int *heap;
-    int size;
-
-    void heapify(int n, int i) {
-        int largest = i;
-        int left = 2 * i + 1;
-        int right = 2 * i + 2;
-
-        if (left < n && heap[left] > heap[largest])
-            largest = left;
-
-        if (right < n && heap[right] > heap[largest])
-            largest = right;
-
-        if (largest != i) {
-            swap(heap[i], heap[largest]);
-            heapify(n, largest);
-        }
-    }
-
-public:
-    HeapSort(int arr[], int n) {
-        heap = arr;
-        size = n;
-    }
-void EnterArray() override {
-        for (int i = 0; i < size; i++) {
-            cout << "Enter the element " << i + 1 << " in the array: ";
-            cin >> heap[i];
-        }
-    }
-
-    void InitialArray() override {
-        cout << "Initial array: ";
-        for (int i = 0; i < size; i++) {
-            cout << heap[i] << " ";
-        }
-        cout << endl;
-    }
-
-
- void SortArray() override {
-        for (int i = size / 2 - 1; i >= 0; i--)
-            heapify(size, i);
-        for (int i = size - 1; i > 0; i--) {
-            swap(heap[0], heap[i]);
-            heapify(i, 0);
-            cout << "Iteration " << size - i << ": ";
-            for (int j = 0; j < size; ++j)
-                cout << heap[j] << " ";
-            cin.get();
-        }
-    }
-
-    void DisplaySortArray() override {
-        cout << "Sorted array using heap sort: ";
-        for (int i = 0; i < size; ++i)
-            cout << heap[i] << " ";
-        cout << endl;
-    }
-};
-class SelectionSort: public Arr {
+class SelectionSort:public Arr {
 private:
     int *arr;
     int n;
@@ -85,14 +22,14 @@ public:
         delete[] arr;
     }
 
-    void enterArray() override {
+    void EnterArray() override {
         for (int i = 0; i < n; i++) {
             cout << "Enter the element " << i + 1 << " in the array: ";
             cin >> arr[i];
         }
     }
 
-    void initialArray() override {
+    void InitialArray() override {
         cout << "Initial array: ";
         for (int i = 0; i < n; i++) {
             cout << "|" << arr[i] << "| ";
@@ -100,7 +37,7 @@ public:
         cout << endl;
     }
 
-    void sortArray() override {
+    void SortArray() override {
         int min;
         for (int i = 0; i < n - 1; i++) {
             min = i;
@@ -129,7 +66,7 @@ public:
         }
     }
 
-    void displaySortedArray() override {
+    void DisplaySortArray() override {
         cout << "Sorted Array: ";
         for (int k = 0; k < n; k++) {
             cout << "|" << arr[k] << "| ";
@@ -137,9 +74,77 @@ public:
         cout << endl;
     }
 };
+class HeapSort: public Arr {
+private:
+    int *heap;
+    int size;
+
+    void heapify(int n, int i) {
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+
+        if (left < n && heap[left] > heap[largest])
+            largest = left;
+
+        if (right < n && heap[right] > heap[largest])
+            largest = right;
+
+        if (largest != i) {
+            swap(heap[i], heap[largest]);
+            heapify(n, largest);
+        }
+    }
+
+public:
+    HeapSort(int n) {
+        size = n;
+        heap = new int[size];
+    }
+
+    ~HeapSort() {
+        delete[] heap;
+    }
+
+   void EnterArray() override {
+        for (int i = 0; i < size; i++) {
+            cout << "Enter the element " << i + 1 << " in the array: ";
+            cin >> heap[i];
+        }
+    }
+
+    void InitialArray() override {
+        cout << "Initial array: ";
+        for (int i = 0; i < size; i++) {
+            cout << heap[i] << " ";
+        }
+        cout << endl;
+    }
+
+    void SortArray() override {
+        for (int i = size / 2 - 1; i >= 0; i--)
+            heapify(size, i);
+        for (int i = size - 1; i > 0; i--) {
+            swap(heap[0], heap[i]);
+            heapify(i, 0);
+            cout << "Iteration " << size - i << ": ";
+            for (int j = 0; j < size; ++j)
+                cout << heap[j] << " ";
+            cin.get();
+        }
+    }
+
+    void DisplaySortArray() override {
+        cout << "Sorted array using heap sort: ";
+        for (int i = 0; i < size; ++i)
+            cout << heap[i] << " ";
+        cout << endl;
+    }
+};
+
 
 int main() {
-   Arr * a1;
+     Arr * a1;
      int n;
      int choice;
     cout << "Enter the number of elements in the array: ";
@@ -190,9 +195,5 @@ int main() {
     cout << "Wrong input! Please enter 1 or 2"<< endl;
         break;
     }
-    return 0;
-}
-
-
     return 0;
 }
