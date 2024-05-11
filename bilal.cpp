@@ -67,14 +67,14 @@ public:
         delete[] arr;
     }
 
-    void enterArray() {
+    void enterArray() override {
         for (int i = 0; i < n; i++) {
             cout << "Enter the element " << i + 1 << " in the array: ";
             cin >> arr[i];
         }
     }
 
-    void initialArray() {
+    void initialArray() override {
         cout << "Initial array: ";
         for (int i = 0; i < n; i++) {
             cout << "|" << arr[i] << "| ";
@@ -82,7 +82,7 @@ public:
         cout << endl;
     }
 
-    void sortArray() {
+    void sortArray() override {
         int min;
         for (int i = 0; i < n - 1; i++) {
             min = i;
@@ -111,7 +111,7 @@ public:
         }
     }
 
-    void displaySortedArray() {
+    void displaySortedArray() override {
         cout << "Sorted Array: ";
         for (int k = 0; k < n; k++) {
             cout << "|" << arr[k] << "| ";
