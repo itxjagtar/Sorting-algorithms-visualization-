@@ -7,7 +7,7 @@ class Arr{
     virtual void SortArray()=0;
     virtual void DisplaySortArray()=0;
 };
-class HeapSort {
+class HeapSort:public Arr  {
 private:
     int *heap;
     int size;
@@ -52,7 +52,7 @@ public:
     }
 };
 
-class SelectionSort {
+class SelectionSort: public Arr {
 private:
     int *arr;
     int n;
