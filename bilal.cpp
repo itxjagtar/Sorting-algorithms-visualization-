@@ -148,20 +148,15 @@ int main() {
         cout << "Invalid input. Number of elements must be positive." << endl;
         return 1;
     }
+    cout << "--------------------------------------------------------"<< endl;
+    cout << " Select the Algorithm " << endl;
+    cout << " 1- Selection Sort" << endl;
+    cout << " 2- Heap Sort" << endl;
+    cout << "--------------------------------------------------------"<< endl;
+    cout << "Enter the choice: ";
+    cin >> choice;
     SelectionSort s1(n);
-    s1.enterArray();
-    s1.initialArray();
-    cout << "Press Enter to start selection sort..." << endl;
-    cin.ignore();
-    s1.sortArray();
-    s1.displaySortedArray();
-    HeapSort h1(arr, arr_size);
-    cout << "Original array: ";
-    for (int i = 0; i < arr_size; ++i)
-        cout << arr[i] << " ";
-    h1.sort();
-    cout << "Sorted array using heap sort: ";
-    h1.printArray();
+    HeapSort h1(n);
 
     return 0;
 }
