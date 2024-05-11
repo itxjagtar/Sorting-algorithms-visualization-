@@ -157,6 +157,42 @@ int main() {
     cin >> choice;
     SelectionSort s1(n);
     HeapSort h1(n);
+    switch (choice)
+    {
+    case 1:
+    cout << endl;
+    cout << "--------------------------------------------------" << endl;
+    cout << "Selection Sort Algorithm "<< endl;
+        a1=&s1;
+    a1->EnterArray();
+    a1->InitialArray();
+    cout << "Press Enter to start selection sort..." << endl;
+    cin.ignore();
+    a1->SortArray();
+    a1->DisplaySortArray();
+    cout << "--------------------------------------------------" << endl;
+    break;
+
+    case 2:
+    cout << endl;
+    cout << "--------------------------------------------------" << endl;
+    cout << "Heap Sort Algorithm "<< endl;
+     a1=&h1;
+      a1->EnterArray();
+    a1->InitialArray();
+    cout << "Press Enter to start sorting..." << endl;
+    cin.get();
+    a1->SortArray();
+    a1->DisplaySortArray();
+    cout << "--------------------------------------------------" << endl;
+    break;
+    default:
+    cout << "Wrong input! Please enter 1 or 2"<< endl;
+        break;
+    }
+    return 0;
+}
+
 
     return 0;
 }
