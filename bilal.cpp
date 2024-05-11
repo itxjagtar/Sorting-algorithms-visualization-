@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 class Arr{
     public:
@@ -155,8 +156,8 @@ int main() {
     }
     cout << "--------------------------------------------------------"<< endl;
     cout << " Select the Algorithm " << endl;
-    cout << " 1- Selection Sort" << endl;
-    cout << " 2- Heap Sort" << endl;
+    cout << setw(20) <<" 1- Selection Sort" << endl;
+    cout << setw(15) <<" 2- Heap Sort" << endl;
     cout << "--------------------------------------------------------"<< endl;
     cout << "Enter the choice: ";
     cin >> choice;
@@ -167,7 +168,8 @@ int main() {
     case 1:
     cout << endl;
     cout << "--------------------------------------------------" << endl;
-    cout << "Selection Sort Algorithm "<< endl;
+    cout << setw(40) << "Selection Sort Algorithm "<< endl;
+    cout << endl;
         a1=&s1;
     a1->EnterArray();
     a1->InitialArray();
@@ -181,7 +183,8 @@ int main() {
     case 2:
     cout << endl;
     cout << "--------------------------------------------------" << endl;
-    cout << "Heap Sort Algorithm "<< endl;
+    cout << setw(40) <<  "Heap Sort Algorithm "<< endl;
+    cout <<endl;
      a1=&h1;
       a1->EnterArray();
     a1->InitialArray();
