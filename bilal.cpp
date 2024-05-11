@@ -34,6 +34,21 @@ public:
         heap = arr;
         size = n;
     }
+void EnterArray() override {
+        for (int i = 0; i < size; i++) {
+            cout << "Enter the element " << i + 1 << " in the array: ";
+            cin >> heap[i];
+        }
+    }
+
+    void InitialArray() override {
+        cout << "Initial array: ";
+        for (int i = 0; i < size; i++) {
+            cout << heap[i] << " ";
+        }
+        cout << endl;
+    }
+
 
     void sort() {
         for (int i = size / 2 - 1; i >= 0; i--)
