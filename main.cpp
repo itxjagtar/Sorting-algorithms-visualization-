@@ -1,6 +1,9 @@
 #include <iostream>
 #include <iomanip>
+#include <fstream>
+#include <string>
 using namespace std;
+ofstream Step("steps.txt");
 class Arr{
     public:
     virtual void EnterArray()=0;
@@ -31,8 +34,8 @@ public:
     }
 
     void EnterArray() override  {
-        cout << "Enter Elements of Array: " << endl;
         for(int i = 0; i < size; i++) {
+             cout << "Enter Element " << i+1 <<  " of Array: ";
             cin >> arr[i];
             cin.get();
         }
@@ -44,16 +47,17 @@ public:
         for (int i = 0; i < size; ++i) {
             cout << arr[i] << "  " ;
         }
-        cout << endl;
         cin.get();
     }
 
     void DisplayArrayStepWise(int step) {
         cout << "Array after step " << step + 1 << ": ";
+        Step << "Step " << step + 1 << ": ";
         for (int i = 0; i < size; ++i) {
             cout << arr[i] << " ";
+            Step << arr[i] << " ";
         }
-        cout << endl;
+        Step << endl;
     }
 
     void SortArray() override {
@@ -78,6 +82,8 @@ public:
     }
 
     void DisplaySortArray() override {
+        cout << endl;
+        cout << endl;
         cout << "Sorted Array: ";
         for (int i = 0; i < size; ++i) {
             cout << arr[i] << " ";
@@ -97,11 +103,10 @@ public:
     }
 
     void EnterArray() override {
-        cout << "Enter Elements of Array: " << endl;
         for(int i = 0; i < size; i++) {
+            cout << "Enter Element " << i+1 <<" of Array: ";
             cin >> array[i];
         }
-        cout << endl;
     }
 
     void InitialArray() override {
@@ -119,16 +124,22 @@ public:
                     array[j + 1] = temp;
                 }
             }
-            cout << endl;
             cout << "Press Enter To continue: " << endl;
             cin.get();
             cout << "Step " << i + 1 << ": ";
-            display();
-            cout << endl;
+            Step << "Step " << i + 1 << ": ";
+            for(int i = 0; i < size; i++) {
+            cout << array[i] << " ";
+            Step << array[i] << " ";
+        }
+        cout << endl;
+            Step << endl;
         }
     }
 
     void DisplaySortArray() override {
+         cout << endl;
+        cout << endl;
         cout << "Sorted Array: ";
         display();
         cout << endl;
@@ -152,6 +163,7 @@ private:
     int n;
 
 public:
+
     SelectionSort(int n1) {
         n = n1;
         arr = new int[n];
@@ -194,18 +206,24 @@ public:
             cout << "Press Enter to see the next iteration...";
             cin.get();
             cout << "Array after iteration " << i + 1 << ":" << endl;
+            Step << "Step " << i+1 << ":";
             for (int k = 0; k < n; k++) {
                 if (k == i || k == min) {
                     cout << "|*" << arr[k] << "*| ";
+                    Step << arr[k] << " ";
                 } else {
                     cout << "| " << arr[k] << " ";
+                    Step << arr[k] << " ";
                 }
             }
             cout << "|" << endl;
+            Step << endl;
         }
     }
 
     void DisplaySortArray() override {
+         cout << endl;
+        cout << endl;
         cout << "Sorted Array: ";
         for (int k = 0; k < n; k++) {
             cout << "|" << arr[k] << "| ";
@@ -267,13 +285,19 @@ public:
             swap(heap[0], heap[i]);
             heapify(i, 0);
             cout << "Iteration " << size - i << ": ";
-            for (int j = 0; j < size; ++j)
+            Step << "Step " << size -i << " : ";
+            for (int j = 0; j < size; ++j){
                 cout << heap[j] << " ";
+                Step << heap[j] << " ";
+            }
+            Step << endl;
             cin.get();
         }
     }
 
     void DisplaySortArray() override {
+         cout << endl;
+        cout << endl;
         cout << "Sorted array using heap sort: ";
         for (int i = 0; i < size; ++i)
             cout << heap[i] << " ";
@@ -305,6 +329,8 @@ int main() {
     HeapSort h1(n);
     Bubble_Sorting b1(n);
     CountingSort c1(100,n);
+    ifstream StepRead("steps.txt");
+    string text;
     switch (choice)
     {
     case 1:
@@ -318,6 +344,11 @@ int main() {
     cout << "Press Enter to start selection sort..." << endl;
     cin.ignore();
     a1->SortArray();
+    cout << setw(500) <<"Steps Involved: " << endl;
+    while(getline(StepRead,text)){
+        cout <<  setw(500) <<  text << endl;
+    }
+
     a1->DisplaySortArray();
     cout << "--------------------------------------------------" << endl;
     break;
@@ -333,6 +364,10 @@ int main() {
     cout << "Press Enter to start sorting..." << endl;
     cin.get();
     a1->SortArray();
+    cout << setw(500) <<"Steps Involved: " << endl;
+    while(getline(StepRead,text)){
+        cout <<  setw(500) <<  text << endl;
+    }
     a1->DisplaySortArray();
     cout << "--------------------------------------------------" << endl;
     break;
@@ -348,6 +383,10 @@ int main() {
     cout << "Press Enter to start sorting..." << endl;
     cin.get();
     a1->SortArray();
+    cout << setw(500) <<"Steps Involved: " << endl;
+    while(getline(StepRead,text)){
+        cout <<  setw(500) <<  text << endl;
+    }
     a1->DisplaySortArray();
     cout << "--------------------------------------------------" << endl;
     break;
@@ -363,13 +402,16 @@ int main() {
     cout << "Press Enter to start sorting..." << endl;
     cin.get();
     a1->SortArray();
+    cout << setw(500) <<"Steps Involved: " << endl;
+    while(getline(StepRead,text)){
+        cout <<  setw(500) <<  text << endl;
+    }
     a1->DisplaySortArray();
     cout << "--------------------------------------------------" << endl;
     break;
     default:
-    cout << "Wrong input! Please enter 1 or 2"<< endl;
+    cout << "Wrong input! Please enter 1,2,3 or 4"<< endl;
         break;
     }
     return 0;
 }
-
